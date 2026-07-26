@@ -1,0 +1,35 @@
+class Solution {
+    public int maximumProduct(int[] nums) {
+        int first = Integer.MIN_VALUE;
+        int second = Integer.MIN_VALUE;
+        int third = Integer.MIN_VALUE;
+        int small = Integer.MAX_VALUE;
+        int Ssmall = Integer.MAX_VALUE;
+        for (int n : nums) {
+
+            if (n > first) {
+
+                third = second;
+
+                second = first;
+                first = n;
+            } else if (second < n) {
+                third = second;
+                second = n;
+            } else if (third < n) {
+                third = n;
+            }
+
+            if (small > n) {
+                Ssmall = small;
+                small = n;
+            } else if (Ssmall > n) {
+                Ssmall = n;
+            }
+        }
+        int p1 = first * second * third;
+        int p2 = first * small * Ssmall;
+
+        return Math.max(p1, p2);
+    }
+}
