@@ -1,0 +1,17 @@
+class Solution {
+    public boolean uniformArray(int[] nums1) {
+        int min = Integer.MAX_VALUE;
+        for (int n : nums1) {
+            min = Math.min(n, min);
+        }
+        if ((min & 1) != 0) {
+            return true;
+        }
+        for (int i : nums1) {
+            if ((i & 1) != 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+}
